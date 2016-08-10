@@ -12,6 +12,7 @@ async def chess_pub():
     desk = cp.place_pieces()
     async with pool.get() as redis:
         redis.publish("team_chess:1", ujson.dumps(desk))
+        await asyncio.sleep(0)
 
 
 if __name__ == '__main__':
